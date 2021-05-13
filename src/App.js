@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+//Importing Components..
+import Form from "./Components/Form";
+
+class App extends Component {
+  render() {
+    return (
+      <div className="h-screen bg-gradient-to-r from-green-400 to-blue-500  ">
+        <header className="text-center p-10">
+          <h1 className="todo text-4xl font-semibold text-white   ">
+            React Todo List
+          </h1>
+        </header>
+        <Form />
+      </div>
+    );
+  }
 }
-
 export default App;
