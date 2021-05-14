@@ -1,3 +1,6 @@
-.todo {
+* {
   font-family: cursive;
+}
+.App {
+  height: 100vh;
 }

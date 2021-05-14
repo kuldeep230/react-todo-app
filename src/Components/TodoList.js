@@ -5,15 +5,17 @@ import Todo from "./Todo";
 
 class TodoList extends Component {
   render() {
-    const { todos } = this.props;
+    const { mytodos, handleDelete, handleCheck } = this.props;
     return (
       <div className="mt-20">
         <ul>
-          {todos.map((todo) => (
+          {mytodos.map((todo) => (
             <Todo
               todoText={todo.text}
-              todoCompleted={todo.completed}
-              key={todo.id}
+              key={todo.key}
+              todo={todo}
+              handleDelete={handleDelete}
+              handleCheck={handleCheck}
             />
           ))}
         </ul>
