@@ -1,34 +1,22 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import TodoList from "./TodoList";
+import TodoContext from "../Context/TodoContext/TodoContext";
 
-const Form = ({
-  inputText,
-  setInputText,
-  mytodos,
-  setMyTodos,
-  getTodosAPI,
-  todosAPI,
-  setTodosAPI,
-}) => {
-  const handleInputText = (e) => {
-    setInputText(e.target.value);
-  };
+const Form = () => {
+  const context = useContext(TodoContext);
 
-  const handleDelete = (todo) => {
-    setMyTodos(mytodos.filter((element) => element.key !== todo.key));
-    setTodosAPI(todosAPI.filter((element) => element.id !== todo.id));
-  };
+  // const handleInputText = (e) => {
+  //   context.setInputText(e.target.value);
+  // };
+
+  useEffect(() => {
+    context.getTodosAPI();
+    //eslint-disable-next-line
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (inputText !== "") {
-      let todoItem = {
-        text: inputText,
-        key: Date.now(),
-      };
-      setMyTodos(mytodos.concat(todoItem).reverse());
-    }
-    setInputText("");
+    context.submitHandler(context.inputText, context.mytodos);
   };
 
   return (
@@ -40,11 +28,11 @@ const Form = ({
             <i className="fas fa-hand-point-right text-red-400 animate-pulse"></i>
           </h1>
           <input
-            onChange={handleInputText}
+            onChange={context.setInputText}
             className="w-8/12 h-14 p-5 text-lg"
             type="text"
             name="text"
-            value={inputText}
+            value={context.inputText}
             placeholder="@example: I have to go Shopping today at 7:00pm..."
           />
           <button
@@ -55,12 +43,7 @@ const Form = ({
           </button>
         </div>
         <div>
-          <TodoList
-            todosAPI={todosAPI}
-            mytodos={mytodos}
-            getTodosAPI={getTodosAPI}
-            handleDelete={handleDelete}
-          />
+          <TodoList />
         </div>
       </form>
     </div>

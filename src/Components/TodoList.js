@@ -1,31 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 
 //Importing Components..
 import Todo from "./Todo";
+import TodoContext from "../Context/TodoContext/TodoContext";
 
-const TodoList = ({ mytodos, handleDelete, getTodosAPI, todosAPI }) => {
+const TodoList = () => {
+  const context = useContext(TodoContext);
+
   useEffect(() => {
-    getTodosAPI();
+    context.getTodosAPI();
     //eslint-disable-next-line
   }, []);
   return (
     <div className="mt-20">
       <ul>
-        {mytodos.map((todo) => (
-          <Todo
-            todoText={todo.text}
-            key={todo.key}
-            todo={todo}
-            handleDelete={handleDelete}
-          />
+        {context.mytodos.map((todo) => (
+          <Todo todoText={todo.text} key={todo.key} todo={todo} />
         ))}
-        {todosAPI.map((todo) => (
-          <Todo
-            todoText={todo.title}
-            key={todo.id}
-            todo={todo}
-            handleDelete={handleDelete}
-          />
+        {context.todosAPI.map((todo) => (
+          <Todo todoText={todo.title} key={todo.id} todo={todo} />
         ))}
       </ul>
     </div>

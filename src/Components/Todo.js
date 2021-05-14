@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import TodoContext from "../Context/TodoContext/TodoContext";
 
-const Todo = ({ todoText, todo, handleDelete }) => {
+const Todo = ({ todoText, todo }) => {
+  const context = useContext(TodoContext);
   const onhandleDelete = (e) => {
     e.preventDefault();
-    handleDelete(todo);
+    context.deleteHandler(todo, context.mytodos, context.todosAPI);
   };
 
   return (

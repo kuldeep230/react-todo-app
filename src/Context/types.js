@@ -1,0 +1,6 @@
+export const ALL_TODOS = "ALL_TODOS";
+export const SET_TODOSAPI = "SET_TODOSAPI";
+export const SET_INPUT_TEXT = "SET_INPUT_TEXT";
+export const SET_TEXT_EMPTY = "SET_TEXT_EMPTY";
+export const DELETE_MYTODOS = "DELETE_MYTODOS";
+export const DELETE_TODOSAPI = "DELETE_TODOSAPI";
